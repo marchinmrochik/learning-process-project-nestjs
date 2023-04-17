@@ -14,4 +14,4 @@ const getMongoString = (configService: ConfigService) =>
   configService.get('MONGO_LOGIN') +
   ':' +
   configService.get('MONGO_PASSWORD') +
-  '@cluster0.ksuookv.mongodb.net/?retryWrites=true&w=majority`';
+  '@cluster0.ksuookv.mongodb.net/?retryWrites=true';
