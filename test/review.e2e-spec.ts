@@ -13,8 +13,8 @@ const testDTO: CreateReviewDto = {
   name: 'Test',
   title: 'Title Test',
   description: 'Description Test',
-  rating: '5',
-  productId: productId,
+  rating: 5,
+  productId,
 };
 
 describe('AppController (e2e)', () => {
@@ -38,6 +38,16 @@ describe('AppController (e2e)', () => {
       .then(({ body }: request.Response) => {
         createdId = body._id;
         expect(createdId).toBeDefined();
+      });
+  });
+
+  it('/review/create (POST) - fail', async () => {
+    return request(app.getHttpServer())
+      .post('/review/create')
+      .send({ ...testDTO, rating: 0 })
+      .expect(400)
+      .then(({ body }: request.Response) => {
+        console.log(body);
       });
   });
 
